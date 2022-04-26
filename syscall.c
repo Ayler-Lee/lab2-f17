@@ -18,7 +18,10 @@ int
 fetchint(uint addr, int *ip)
 {
   struct proc *curproc = myproc();
-
+  cprintf("stack size: %d\n", curproc->stacksz);
+  cprintf("addr is %d\n", addr);
+  cprintf("ip is %p\n", ip);
+  return -1;
   if(addr >= curproc->sz || addr+4 > curproc->sz)
     return -1;
   *ip = *(int*)(addr);
