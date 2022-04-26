@@ -68,6 +68,7 @@ exec(char *path, char **argv)
   // clearpteu(pgdir, (char*)(sz - 2*PGSIZE));
   // sp = sz;
   sp = KERNBASE - 4;
+  cprintf("stack size is %d", KERNBASE - sp - 4);
 
   if((sp = allocuvm(pgdir, sp - 2*PGSIZE, sp)) == 0)
     goto bad;
