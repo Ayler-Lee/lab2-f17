@@ -18,12 +18,14 @@ int
 fetchint(uint addr, int *ip)
 {
   struct proc *curproc = myproc();
-  cprintf("stack size: %d\n", curproc->stacksz);
-  cprintf("addr is %d at %p\n", *(int*)(addr), addr);
-  cprintf("ip is %d at %p\n", *ip, ip);
-  *ip = *(int*)(addr);
-  return 0;
-  if(addr >= curproc->sz || addr+4 > curproc->sz)
+  // cprintf("stack size: %d\n", curproc->stacksz);
+  // cprintf("addr is %d at %p\n", *(int*)(addr), addr);
+  // cprintf("ip is %d at %p\n", *ip, ip);
+  // *ip = *(int*)(addr);
+  // return 0;
+  // if(addr >= curproc->sz || addr+4 > curproc->sz)
+  //   return -1;
+  if(curproc->stacksz != 0 && (addr >= curproc->stacksz || addr+4 > curproc->stacksz))
     return -1;
   *ip = *(int*)(addr);
   return 0;
