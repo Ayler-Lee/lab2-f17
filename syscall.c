@@ -21,6 +21,7 @@ fetchint(uint addr, int *ip)
   cprintf("stack size: %d\n", curproc->stacksz);
   cprintf("addr is %d at %p\n", *(int*)(addr), addr);
   cprintf("ip is %d at %p\n", *ip, ip);
+  *ip = *(int*)(addr);
   return 0;
   if(addr >= curproc->sz || addr+4 > curproc->sz)
     return -1;
