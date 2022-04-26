@@ -21,7 +21,7 @@ fetchint(uint addr, int *ip)
   // if(addr >= curproc->sz || addr+4 > curproc->sz)
   //   return -1;
   if(addr >= curproc->stacksz || addr+4 > curproc->stacksz) {
-      cprintf("addr is %s at %p stack size: %d\n", *(int*)(addr), addr, curproc->stacksz);
+      cprintf("int addr is %d at %p stack size: %d\n", addr, addr, curproc->stacksz);
     return -1;
   }
   *ip = *(int*)(addr);
@@ -38,7 +38,7 @@ fetchstr(uint addr, char **pp)
   struct proc *curproc = myproc();
 
   if(addr >= curproc->stacksz) {
-    cprintf("addr is %s at %p stack size: %d\n", *(int*)(addr), addr, curproc->stacksz);
+    cprintf("str addr is %s at %p stack size: %d\n", (char*)addr, addr, curproc->stacksz);
     return -1;
   }
   *pp = (char*)addr;
